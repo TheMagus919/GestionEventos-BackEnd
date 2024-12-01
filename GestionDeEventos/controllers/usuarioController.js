@@ -22,12 +22,16 @@ const usuarioController = {
                 res.status(500).send('Error al loguearse.');
                 return;
             }
-            if (email === resultado[0].email && password === resultado[0].password) {
-                const token = jwt.sign({ rol:resultado[0].rol, id:resultado[0].idUsuario  }, 'clave_secreta', { expiresIn: '1h' });
-                res.json({ message: 'Login exitoso', token });
-              } else {
-                res.status(401).json({ message: 'Credenciales incorrectas' });
-              }
+            if(resultado[0] != null){
+                if (email === resultado[0].email && password === resultado[0].password) {
+                    const token = jwt.sign({ rol:resultado[0].rol, id:resultado[0].idUsuario  }, 'clave_secreta', { expiresIn: '1h' });
+                    res.json({ message: 'Login exitoso', token });
+                  } else {
+                    res.status(401).json({ message: 'Credenciales incorrectas'});
+                  }
+            }else{
+                res.status(404).json({ message: 'Usuario y/o contraseña incorrectas.'});
+            }
         });
     }
 };

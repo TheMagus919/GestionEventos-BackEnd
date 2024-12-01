@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const asistenteRoutes = require('./routes/asistenteRoutes');
 const eventoRoutes = require('./routes/eventoRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const participacionRoutes = require('./routes/participacionRoutes');
@@ -27,7 +26,6 @@ connection.connect((err) => {
 
 // Configurar rutas
 app.use('/evento', eventoRoutes);
-app.use('/asistente', asistenteRoutes);
 app.use('/participacion', participacionRoutes);
 app.use('/usuario', usuarioRoutes);
 
