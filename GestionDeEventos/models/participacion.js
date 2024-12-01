@@ -10,7 +10,7 @@ const Participacion = {
         connection.query(sql, [idParticipacion], callback);
     },
     listarConfirmados: function(idEvento, callback) {
-        const sql = 'SELECT u.nombre, u.apellido, p.idParticipacion FROM participacion p JOIN usuarios u ON p.idUsuario = u.idUsuario WHERE p.idEvento=? AND p.confirmacion = false';
+        const sql = 'SELECT u.nombre, u.apellido, p.idParticipacion, e.fecha FROM participacion p JOIN usuarios u ON p.idUsuario = u.idUsuario JOIN evento e ON p.idEvento = e.idEvento WHERE p.idEvento=? AND p.confirmacion = false';
         connection.query(sql, [idEvento], callback);
     },
     descargarCertificado: function(idParticipacion, callback) {

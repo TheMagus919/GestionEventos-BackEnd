@@ -24,12 +24,10 @@ connection.connect((err) => {
     console.log('Conexión exitosa a la base de datos MySQL');
 });
 
-// Configurar rutas
 app.use('/evento', eventoRoutes);
 app.use('/participacion', participacionRoutes);
 app.use('/usuario', usuarioRoutes);
 
-// Iniciar el servidor Express
 app.listen(port, () => {
 console.log(`Servidor Express corriendo en http://localhost:${port}`);
 });
